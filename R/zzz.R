@@ -61,9 +61,20 @@ init_gama_jar <- function(path) {
 # Test version -----------------------------------------------------------------
 #' Extract Gama version
 #' @noRd
+#gama_version <- function(path) {
+#  v_info <- readLines(
+#    paste0(path, "/Contents/Eclipse/Configuration/config.ini"))
+#  v_info <- v_info[10]
+#  v_info <- gsub("[[:alpha:]]|=", "", v_info)
+#  v_info <- as.numeric(v_info)
+#}
+
+
 gama_version <- function(path) {
+  os <- paste0(get_os())
+  subpath <- ifelse(os == "Darwin", "/Contents/Eclipse", "")
   v_info <- readLines(
-    paste0(path, "/Contents/Eclipse/Configuration/config.ini"))
+    paste0(path,  "/configuration/config.ini"))
   v_info <- v_info[10]
   v_info <- gsub("[[:alpha:]]|=", "", v_info)
   v_info <- as.numeric(v_info)
