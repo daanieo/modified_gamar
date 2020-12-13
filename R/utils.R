@@ -11,12 +11,11 @@ map_type <- function(x) {
 # read gaml experiment ---------------------------------------------------------
 read_gaml_experiment <- function(exp, model) {
   tmp <- tempfile(fileext = ".xml")
-  logFile <- paste0(getwd(), "read_gaml.log")
-
+  logFile <- paste0(getwd(), "/read_gaml.log")
   exp <- paste0("\'", exp, "\'", collapse = "")
   model <- paste0("\'", model, "\'", collapse = "")
-  stderrFile <- tempfile(fileext = ".stderr")
-  stdoutFile <- tempfile(fileext = ".stdout")
+  stderrFile <- "C:/Users/daan/Documents/temp1.stderr" #tempfile(fileext = ".stderr")
+  stdoutFile <- "C:/Users/daan/Documents/temp1.stdout" #tempfile(fileext = ".stdout")
   run <- list()
   run$exitStatus <- system2(command = 'java',
           args = c('-jar',
