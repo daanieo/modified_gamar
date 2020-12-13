@@ -14,8 +14,8 @@ read_gaml_experiment <- function(exp, model) {
   logFile <- paste0(getwd(), "/read_gaml.log")
   exp <- paste0("\'", exp, "\'", collapse = "")
   model <- paste0("\'", model, "\'", collapse = "")
-  stderrFile <- "C:/Users/daan/Documents/temp1.stderr" #tempfile(fileext = ".stderr")
-  stdoutFile <- "C:/Users/daan/Documents/temp1.stdout"tempfile(fileext = ".stdout")
+  stderrFile <- tempfile(fileext = ".stderr")#"C:/Users/daan/Documents/temp1.stderr" #tempfile(fileext = ".stderr")
+  stdoutFile <- tempfile(fileext = ".stdout")#"C:/Users/daan/Documents/temp1.stdout" #tempfile(fileext = ".stdout")
   
   system2("copy nul " , stderrFile)
   system2("copy nul " , stdoutFile)
@@ -38,6 +38,8 @@ read_gaml_experiment <- function(exp, model) {
                    shQuote(stdoutFile),
                    '2>',
                    shQuote(stderrFile)))
+  
+  print(run$exitStatus)
 
   if (file.exists(getOption("gamar.log")))
     file.copy(from = getOption("gamar.log"),
@@ -45,8 +47,8 @@ read_gaml_experiment <- function(exp, model) {
   run$stdout <-  readLines(stdoutFile)
   run$stderr <-  readLines(stderrFile)
 
-#  if (length(run$stdout) > 0 & run$exitStatus > 0)
-#    message(paste0("An error has occurred in gama.\nSee the log file", logFile))
+  if (length(run$stdout) > 0 & run$exitStatus > 0)
+    message(paste0("An error has occurred in gama.\nSee the log file", logFile))
 
   unlink(getOption("gamar.workspace"), TRUE, TRUE)
   unlink(c(stdoutFile, stderrFile))
