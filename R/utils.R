@@ -42,8 +42,8 @@ read_gaml_experiment <- function(exp, model) {
   if (file.exists(getOption("gamar.log")))
     file.copy(from = getOption("gamar.log"),
               to = logFile)
-  run$stdout <-  readLines(stdoutFile)
-  run$stderr <-  readLines(stderrFile)
+  run$stdout <-  0#readLines(stdoutFile)
+  run$stderr <-  0#readLines(stderrFile)
 
   if (length(run$stdout) > 0 & run$exitStatus > 0)
     message(paste0("An error has occurred in gama.\nSee the log file", logFile))
