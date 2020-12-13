@@ -10,7 +10,7 @@ map_type <- function(x) {
 
 # read gaml experiment ---------------------------------------------------------
 read_gaml_experiment <- function(exp, model) {
-  tmp <- tempfile(fileext = ".xml")
+  tmp <- "C:/Users/daan/Documents/temp1.xml" #tempfile(fileext = ".xml")
   logFile <- paste0(getwd(), "/read_gaml.log")
   exp <- paste0("\'", exp, "\'", collapse = "")
   model <- paste0("\'", model, "\'", collapse = "")
