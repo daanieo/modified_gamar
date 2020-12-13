@@ -14,8 +14,8 @@ read_gaml_experiment <- function(exp, model) {
   logFile <- paste0(getwd(), "/read_gaml.log")
   exp <- paste0("\'", exp, "\'", collapse = "")
   model <- paste0("\'", model, "\'", collapse = "")
-  stderrFile <- tempfile(fileext = ".stderr")
-  stdoutFile <- tempfile(fileext = ".stdout")
+  stderrFile <- "C:/Users/daan/Documents/temp1.stderr" #tempfile(fileext = ".stderr")
+  stdoutFile <- "C:/Users/daan/Documents/temp1.stdout" #tempfile(fileext = ".stdout")
   
   system2("copy nul " , stderrFile)
   system2("copy nul " , stdoutFile)
