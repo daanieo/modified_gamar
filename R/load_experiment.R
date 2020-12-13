@@ -59,7 +59,10 @@ load_experiment <- function(exp, model) {
   # Reading GAML file:
   message(cat("Loading experiment \"", exp,
                  "\" from file \"", basename(model), "\"...", sep = ""))
+  message(cat("we came till here"))
   out <- read_gaml_experiment(exp, model)
+  
+  
 
   # Check if experiment and type requested are valid:
   check_experiment(exp, list("info" = out))
