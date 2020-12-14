@@ -17,8 +17,17 @@ read_gaml_experiment <- function(exp, model) {
   stderrFile <- tempfile(fileext = ".stderr")#"C:/Users/daan/Documents/temp1.stderr" #tempfile(fileext = ".stderr")
   stdoutFile <- tempfile(fileext = ".stdout")#"C:/Users/daan/Documents/temp1.stdout" #tempfile(fileext = ".stdout")
   
-  system2("copy nul " , stderrFile)
-  system2("copy nul " , stdoutFile)
+  os <- paste0(get_os())
+  
+  if (os == "Linux") {
+    system2(command="touch" ,args = stderrFile)
+    system2(command="touch" ,args = stderrFile)
+  }
+  if (os == "Windows") {
+    system2("copy nul " , stderrFile)
+    system2("copy nul " , stdoutFile)
+  }
+  
   
   run <- list()
   run$exitStatus <- system2(command = 'java',
