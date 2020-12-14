@@ -103,6 +103,10 @@ defpath <- function(path, Xmx = "2048m", Xms = "512m") {
             gamar.Xmx = Xmx,
             gamar.Xms = Xms,
             gamar.gama.path = path)
+    message("default jar is ",defaultjar)
+    message("xmx is ",Xmx)
+    message("xms is ",Xms)
+    message("path is ",path)
     message("Gama configuration succeed!")
       if (version < 1.8) {
         stop(

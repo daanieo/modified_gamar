@@ -30,6 +30,8 @@ read_gaml_experiment <- function(exp, model) {
   
   
   run <- list()
+  
+  
   run$exitStatus <- system2(command = 'java',
           args = c('-jar',
                    getOption("gamar.startjar"),
