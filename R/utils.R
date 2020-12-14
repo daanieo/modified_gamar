@@ -48,7 +48,7 @@ read_gaml_experiment <- function(exp, model) {
                    '2>',
                    shQuote(stderrFile)))
   
-  print(run$exitStatus)
+  message("exit status is ",run$exitStatus)
 
   if (file.exists(getOption("gamar.log")))
     file.copy(from = getOption("gamar.log"),
