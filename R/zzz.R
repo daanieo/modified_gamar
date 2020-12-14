@@ -41,8 +41,8 @@ gama_local_distrib_path <- function() {
 
 init_gama_path <- function(path) {
   os <- paste0(get_os())
-  subpath <- ifelse(os == "Darwin", "/Contents/Eclipse", "")
-  res <- paste0(path, subpath, "/plugins")
+  #subpath <- ifelse(os == "Darwin", "/Contents/Eclipse", "")
+  res <- paste0(path,"/plugins") #paste0(path, subpath, "/plugins")
   ifelse(dir.exists(res), res, NA)
 }
 
@@ -72,7 +72,8 @@ init_gama_jar <- function(path) {
 
 gama_version <- function(path) {
   os <- paste0(get_os())
-  subpath <- ifelse(os == "Darwin", "/Contents/Eclipse", "")
+  message("Recognised os version is ",os)
+  #subpath <- ifelse(os == "Darwin", "/Contents/Eclipse", "")
   v_info <- readLines(
     paste0(path,  "/configuration/config.ini"))
   v_info <- v_info[10]
