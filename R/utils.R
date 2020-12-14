@@ -31,7 +31,7 @@ read_gaml_experiment <- function(exp, model) {
   
   run <- list()
   
-  
+  message("experiment is ",exp)
   run$exitStatus <- system2(command = 'java',
           args = c('-jar',
                    getOption("gamar.startjar"),
@@ -40,7 +40,7 @@ read_gaml_experiment <- function(exp, model) {
                    '-Xmx',
                    getOption("gamar.Xmx"),
                    '-Djava.awt.headless=true org.eclipse.core.launcher.Main',
-                   '-application msi.gama.headless.id4 -v -hpc 2',
+                   '-application msi.gama.headless.id4 -v', # Removed the hpc argument 
                    '-xml',
                    exp,
                    model,
@@ -49,6 +49,8 @@ read_gaml_experiment <- function(exp, model) {
                    shQuote(stdoutFile),
                    '2>',
                    shQuote(stderrFile)))
+  
+  
   
   message("exit status is ",run$exitStatus)
 
